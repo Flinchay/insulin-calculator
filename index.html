@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Basic meta tags for character encoding and responsive design -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link to the main stylesheet -->
     <link rel="stylesheet" href="styles.css">
     <title>Insulin Calculator</title>
 </head>
 <body>
+    <!-- Dark/Light mode toggle button with SVG icons -->
     <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+        <!-- Sun icon for light mode -->
         <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="5"></circle>
             <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -19,16 +23,23 @@
             <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
         </svg>
+        <!-- Moon icon for dark mode -->
         <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
         </svg>
     </button>
+
+    <!-- Main container for the calculator -->
     <div class="container">
         <h1>Insulin Calculator</h1>
+        
+        <!-- Main form for insulin calculation -->
         <form id="insulin-form">
+            <!-- Blood sugar input section with unit toggle -->
             <div class="form-group">
                 <div class="unit-toggle">
                     <label for="blood-sugar">Blood Sugar Level</label>
+                    <!-- Radio buttons for switching between mg/dL and mmol/L -->
                     <div class="toggle-switch">
                         <input type="radio" id="mgdl" name="unit" value="mgdl" checked>
                         <label for="mgdl">mg/dL</label>
@@ -36,31 +47,65 @@
                         <label for="mmol">mmol/L</label>
                     </div>
                 </div>
+                <!-- Input field for blood sugar with step attribute for decimal values -->
                 <input type="number" id="blood-sugar" step="0.1" required placeholder="Enter your blood sugar level">
+                <!-- Dynamic help text that changes based on selected unit -->
                 <small class="help-text" id="blood-sugar-help">Normal range: 70-130 mg/dL</small>
             </div>
             
+            <!-- Carbohydrate input section -->
             <div class="form-group">
                 <label for="carbs">Carbohydrates (g)</label>
                 <input type="number" id="carbs" step="0.1" required placeholder="Enter carbohydrate amount">
             </div>
 
+            <!-- Insulin sensitivity input section -->
             <div class="form-group">
                 <label for="insulin-sensitivity">Insulin Sensitivity</label>
                 <input type="number" id="insulin-sensitivity" step="0.1" required placeholder="Enter your insulin sensitivity">
+                <!-- Dynamic help text that changes based on selected unit -->
                 <small class="help-text" id="sensitivity-help">Example: If 1 unit lowers your blood sugar by 50 mg/dL, enter 50</small>
             </div>
 
+            <!-- Carb ratio input section -->
             <div class="form-group">
                 <label for="carb-ratio">Carb Ratio (grams per unit)</label>
                 <input type="number" id="carb-ratio" step="0.1" required placeholder="Enter your carb ratio">
                 <small class="help-text">Example: If 1 unit covers 15g of carbs, enter 15</small>
             </div>
 
+            <!-- Submit button for calculation -->
             <button type="submit">Calculate Insulin Dose</button>
         </form>
+
+        <!-- Container for displaying calculation results -->
         <div id="result"></div>
+
+        <!-- Link to privacy policy -->
+        <div class="privacy-link">
+            <a href="privacy-policy.html">Privacy Policy</a>
+        </div>
+
+        <!-- Google AdSense container -->
+        <div class="ad-container">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-9211934048234561"
+                 data-ad-slot="1234567890"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+        </div>
     </div>
+
+    <!-- Main JavaScript file -->
     <script src="script.js"></script>
+    
+    <!-- Google AdSense script -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9211934048234561"
+     crossorigin="anonymous"></script>
+    <script>
+        // Initialize AdSense
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
 </body>
 </html>

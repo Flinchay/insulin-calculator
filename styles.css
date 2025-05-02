@@ -214,3 +214,82 @@ button:hover {
         font-size: 1.5rem;
     }
 }
+
+.privacy-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.privacy-content section {
+    margin-bottom: 2rem;
+}
+
+.privacy-content h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.privacy-content p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.privacy-content ul {
+    margin: 1rem 0;
+    padding-left: 2rem;
+}
+
+.privacy-content li {
+    margin-bottom: 0.5rem;
+}
+
+.last-updated {
+    color: var(--help-text-color);
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+.back-link {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.back-link a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.back-link a:hover {
+    color: #357abd;
+    text-decoration: underline;
+}
+
+.privacy-link {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.privacy-link a {
+    color: var(--help-text-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.privacy-link a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+.ad-container {
+    margin-top: 2rem;
+    padding: 1rem;
+    text-align: center;
+    background-color: var(--input-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
