@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Insulin Calculator</title>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Component -->
+        <div id="header"></div>
+
+        <!-- Main Form -->
+        <form id="insulin-form">
+            <!-- Blood Sugar Input Component -->
+            <div id="blood-sugar-input"></div>
+            
+            <!-- Carbs Input Component -->
+            <div id="carbs-input"></div>
+
+            <!-- Insulin Sensitivity Input Component -->
+            <div id="insulin-sensitivity-input"></div>
+
+            <!-- Carb Ratio Input Component -->
+            <div id="carb-ratio-input"></div>
+
+            <button type="submit">Calculate Insulin Dose</button>
+        </form>
+
+        <!-- Result Component -->
+        <div id="result-container"></div>
+    </div>
+
+    <!-- Load Components -->
+    <script>
+        // Function to load components
+        async function loadComponent(componentId, componentPath) {
+            const response = await fetch(componentPath);
+            const html = await response.text();
+            document.getElementById(componentId).innerHTML = html;
+        }
+
+        // Load all components
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadComponent('header', 'components/header.html');
+            await loadComponent('blood-sugar-input', 'components/blood-sugar-input.html');
+            await loadComponent('carbs-input', 'components/carbs-input.html');
+            await loadComponent('insulin-sensitivity-input', 'components/insulin-sensitivity-input.html');
+            await loadComponent('carb-ratio-input', 'components/carb-ratio-input.html');
+            await loadComponent('result-container', 'components/result.html');
+        });
+    </script>
+
+    <!-- Main Script -->
+    <script src="script.js"></script>
+</body>
+</html>
