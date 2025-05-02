@@ -7,52 +7,60 @@
     <title>Insulin Calculator</title>
 </head>
 <body>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+    </button>
     <div class="container">
-        <!-- Header Component -->
-        <div id="header"></div>
-
-        <!-- Main Form -->
+        <h1>Insulin Calculator</h1>
         <form id="insulin-form">
-            <!-- Blood Sugar Input Component -->
-            <div id="blood-sugar-input"></div>
+            <div class="form-group">
+                <div class="unit-toggle">
+                    <label for="blood-sugar">Blood Sugar Level</label>
+                    <div class="toggle-switch">
+                        <input type="radio" id="mgdl" name="unit" value="mgdl" checked>
+                        <label for="mgdl">mg/dL</label>
+                        <input type="radio" id="mmol" name="unit" value="mmol">
+                        <label for="mmol">mmol/L</label>
+                    </div>
+                </div>
+                <input type="number" id="blood-sugar" step="0.1" required placeholder="Enter your blood sugar level">
+                <small class="help-text" id="blood-sugar-help">Normal range: 70-130 mg/dL</small>
+            </div>
             
-            <!-- Carbs Input Component -->
-            <div id="carbs-input"></div>
+            <div class="form-group">
+                <label for="carbs">Carbohydrates (g)</label>
+                <input type="number" id="carbs" step="0.1" required placeholder="Enter carbohydrate amount">
+            </div>
 
-            <!-- Insulin Sensitivity Input Component -->
-            <div id="insulin-sensitivity-input"></div>
+            <div class="form-group">
+                <label for="insulin-sensitivity">Insulin Sensitivity</label>
+                <input type="number" id="insulin-sensitivity" step="0.1" required placeholder="Enter your insulin sensitivity">
+                <small class="help-text" id="sensitivity-help">Example: If 1 unit lowers your blood sugar by 50 mg/dL, enter 50</small>
+            </div>
 
-            <!-- Carb Ratio Input Component -->
-            <div id="carb-ratio-input"></div>
+            <div class="form-group">
+                <label for="carb-ratio">Carb Ratio (grams per unit)</label>
+                <input type="number" id="carb-ratio" step="0.1" required placeholder="Enter your carb ratio">
+                <small class="help-text">Example: If 1 unit covers 15g of carbs, enter 15</small>
+            </div>
 
             <button type="submit">Calculate Insulin Dose</button>
         </form>
-
-        <!-- Result Component -->
-        <div id="result-container"></div>
+        <div id="result"></div>
     </div>
-
-    <!-- Load Components -->
-    <script>
-        // Function to load components
-        async function loadComponent(componentId, componentPath) {
-            const response = await fetch(componentPath);
-            const html = await response.text();
-            document.getElementById(componentId).innerHTML = html;
-        }
-
-        // Load all components
-        document.addEventListener('DOMContentLoaded', async () => {
-            await loadComponent('header', 'components/header.html');
-            await loadComponent('blood-sugar-input', 'components/blood-sugar-input.html');
-            await loadComponent('carbs-input', 'components/carbs-input.html');
-            await loadComponent('insulin-sensitivity-input', 'components/insulin-sensitivity-input.html');
-            await loadComponent('carb-ratio-input', 'components/carb-ratio-input.html');
-            await loadComponent('result-container', 'components/result.html');
-        });
-    </script>
-
-    <!-- Main Script -->
     <script src="script.js"></script>
 </body>
 </html>
