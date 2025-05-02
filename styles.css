@@ -1,5 +1,5 @@
 :root {
-    --primary-color: #4a90e2;
+    --primary-color: #FE5D26;
     --secondary-color: #2c3e50;
     --background-color: #f5f7fa;
     --text-color: #333;
@@ -13,7 +13,7 @@
 }
 
 [data-theme="dark"] {
-    --primary-color: #60a5fa;
+    --primary-color: #FE5D26;
     --secondary-color: #e5e7eb;
     --background-color: #1a1a1a;
     --text-color: #e5e7eb;
@@ -138,7 +138,7 @@ button {
 }
 
 button:hover {
-    background-color: #357abd;
+    background-color: #d44c1f;
 }
 
 .help-text {
@@ -264,7 +264,7 @@ button:hover {
 }
 
 .back-link a:hover {
-    color: #357abd;
+    color: #d44c1f;
     text-decoration: underline;
 }
 
@@ -273,16 +273,27 @@ button:hover {
     text-align: center;
 }
 
-.privacy-link a {
+.page-links {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.page-links a {
     color: var(--help-text-color);
     text-decoration: none;
     font-size: 0.9rem;
     transition: color 0.3s ease;
+    margin: 0 0.5rem;
 }
 
-.privacy-link a:hover {
-    color: var(--primary-color);
+.page-links a:hover {
+    color: #FE5D26;
     text-decoration: underline;
+}
+
+.link-separator {
+    color: var(--help-text-color);
+    margin: 0 0.5rem;
 }
 
 .ad-container {
@@ -292,4 +303,38 @@ button:hover {
     background-color: var(--input-bg);
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
+}
+
+.submit-btn:hover {
+    background-color: #d44c1f;
+}
+
+/* SweetAlert2 Dark Mode Support */
+[data-theme="dark"] .swal2-popup {
+    background-color: var(--container-bg) !important;
+    color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .swal2-title {
+    color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .swal2-content {
+    color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .swal2-confirm {
+    background-color: var(--primary-color) !important;
+}
+
+[data-theme="dark"] .swal2-cancel {
+    color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .swal2-html-container {
+    color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .swal2-backdrop-show {
+    background-color: rgba(0, 0, 0, 0.8) !important;
 }

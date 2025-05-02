@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Link to the main stylesheet -->
     <link rel="stylesheet" href="styles.css">
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <title>Insulin Calculator</title>
 </head>
 <body>
@@ -81,9 +83,13 @@
         <!-- Container for displaying calculation results -->
         <div id="result"></div>
 
-        <!-- Link to privacy policy -->
-        <div class="privacy-link">
-            <a href="privacy-policy.html">Privacy Policy</a>
+        <!-- Links to other pages -->
+        <div class="page-links">
+            <a href="#" id="privacy-link">Privacy Policy</a>
+            <span class="link-separator">|</span>
+            <a href="#" id="about-link">About</a>
+            <span class="link-separator">|</span>
+            <a href="#" id="contact-link">Contact</a>
         </div>
 
         <!-- Google AdSense container -->
@@ -100,12 +106,234 @@
     <!-- Main JavaScript file -->
     <script src="script.js"></script>
     
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     <!-- Google AdSense script -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9211934048234561"
      crossorigin="anonymous"></script>
     <script>
+        // Configure SweetAlert2 with custom animation and dark mode support
+        const swalWithCustomAnimation = Swal.mixin({
+            showClass: {
+                popup: 'animate__animated animate__fadeIn animate__faster'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__fadeOut animate__faster'
+            },
+            customClass: {
+                popup: 'swal2-popup',
+                title: 'swal2-title',
+                content: 'swal2-content',
+                confirmButton: 'swal2-confirm',
+                cancelButton: 'swal2-cancel'
+            }
+        });
+
         // Initialize AdSense
         (adsbygoogle = window.adsbygoogle || []).push({});
+
+        // Show warning popup when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            swalWithCustomAnimation.fire({
+                title: 'Important Notice',
+                html: `
+                    <div style="text-align: center; color: var(--text-color);">
+                        <p><strong>Always consult with a healthcare provider before making changes to your insulin dosage.</strong></p>
+                        <p>This calculator is for informational purposes only and should not replace professional medical advice.</p>
+                        <p>Individual insulin requirements may vary based on:</p>
+                        <ul style="text-align: left; display: inline-block; margin: 0 auto; color: var(--text-color);">
+                            <li>Current health status</li>
+                            <li>Activity level</li>
+                            <li>Time of day</li>
+                            <li>Other medications</li>
+                        </ul>
+                    </div>
+                `,
+                icon: 'warning',
+                confirmButtonText: 'I Understand',
+                confirmButtonColor: '#FE5D26',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                allowEnterKey: true,
+                backdrop: true
+            });
+        });
+
+        // Privacy Policy Popup
+        document.getElementById('privacy-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            swalWithCustomAnimation.fire({
+                title: 'Privacy Policy',
+                html: `
+                    <div style="text-align: left; max-height: 60vh; overflow-y: auto; color: var(--text-color);">
+                        <p class="last-updated" style="color: var(--help-text-color);">Last updated: March 2024</p>
+
+                        <section>
+                            <h2 style="color: var(--primary-color);">Introduction</h2>
+                            <p>This Privacy Policy explains how the Insulin Calculator ("we", "us", or "our") handles your information when you use our website. We are committed to protecting your privacy and ensuring the security of your personal data.</p>
+                        </section>
+
+                        <section>
+                            <h2 style="color: var(--primary-color);">Information We Collect</h2>
+                            <p>Our calculator processes the following information locally in your browser:</p>
+                            <ul>
+                                <li>Blood sugar levels</li>
+                                <li>Carbohydrate amounts</li>
+                                <li>Insulin sensitivity values</li>
+                                <li>Carbohydrate ratio values</li>
+                                <li>Theme preference (light/dark mode)</li>
+                            </ul>
+                            <p>All calculations are performed locally in your browser. We do not collect, store, or transmit any of this information to our servers.</p>
+                        </section>
+
+                        <section>
+                            <h2 style="color: var(--primary-color);">Local Storage</h2>
+                            <p>We use your browser's local storage to:</p>
+                            <ul>
+                                <li>Remember your theme preference (light/dark mode)</li>
+                                <li>Maintain your unit preference (mg/dL or mmol/L)</li>
+                            </ul>
+                            <p>This information is stored only on your device and is not transmitted to us.</p>
+                        </section>
+
+                        <section>
+                            <h2 style="color: var(--primary-color);">Cookies</h2>
+                            <p>We do not use any cookies for tracking or analytics purposes.</p>
+                        </section>
+
+                        <section>
+                            <h2 style="color: var(--primary-color);">Third-Party Services</h2>
+                            <p>We do not use any third-party services that collect or process your data.</p>
+                        </section>
+
+                        <section>
+                            <h2 style="color: var(--primary-color);">Data Security</h2>
+                            <p>Since all calculations are performed locally in your browser:</p>
+                            <ul>
+                                <li>Your data never leaves your device</li>
+                                <li>We do not have access to your calculations or inputs</li>
+                                <li>Your information is not stored on any external servers</li>
+                            </ul>
+                        </section>
+
+                        <section>
+                            <h2 style="color: var(--primary-color);">Children's Privacy</h2>
+                            <p>Our calculator is not intended for use by children under the age of 13. We do not knowingly collect personal information from children under 13.</p>
+                        </section>
+
+                        <section>
+                            <h2 style="color: var(--primary-color);">Changes to This Privacy Policy</h2>
+                            <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date.</p>
+                        </section>
+
+                        <section>
+                            <h2 style="color: var(--primary-color);">Contact Us</h2>
+                            <p>If you have any questions about this Privacy Policy, please contact us at:</p>
+                            <p>Email: privacy@insulincalculator.com</p>
+                        </section>
+                    </div>
+                `,
+                width: '800px',
+                confirmButtonColor: '#FE5D26',
+                confirmButtonText: 'Close'
+            });
+        });
+
+        // About Popup
+        document.getElementById('about-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            swalWithCustomAnimation.fire({
+                title: 'About',
+                html: `
+                    <div style="text-align: center;">
+                        <img src="images/headshot.png" alt="Profile Image" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin: 0 auto 2rem; display: block; border: 4px solid #FE5D26; box-shadow: var(--box-shadow);">
+                        <div style="text-align: left; max-height: 60vh; overflow-y: auto; color: var(--text-color);">
+                            <p>Hello! my name is <strong>Joe</strong>.</p>
+                            <p>Insulin Calculator is a simple and accessible tool designed to help diabetics calculate their insulin dosage when self-administering. Managing blood glucose levels can be challenging, and this site aims to make that process a little easier by providing a fast, user-friendly way to determine accurate insulin doses based on individual input.</p>
+                            <p>Created with the goal of supporting those living with diabetes, this calculator is intended for educational and assistive use. Whether you're newly diagnosed or managing diabetes long-term, Insulin Calculator offers a convenient way to stay on top of your insulin needs.</p>
+                            <p>This tool is completely free to use and does not collect or store any personal data.</p>
+                        </div>
+                    </div>
+                `,
+                width: '800px',
+                confirmButtonColor: '#FE5D26',
+                confirmButtonText: 'Close'
+            });
+        });
+
+        // Contact Form Popup
+        document.getElementById('contact-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            swalWithCustomAnimation.fire({
+                title: 'Contact Us',
+                html: `
+                    <form id="contactForm" style="text-align: left;">
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-color);">Name</label>
+                            <input type="text" id="name" name="name" required style="width: 100%; padding: 0.8rem; border: 2px solid var(--input-border); border-radius: var(--border-radius); background-color: var(--input-bg); color: var(--text-color); font-size: 1rem;">
+                        </div>
+                        
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-color);">Email</label>
+                            <input type="email" id="email" name="email" required style="width: 100%; padding: 0.8rem; border: 2px solid var(--input-border); border-radius: var(--border-radius); background-color: var(--input-bg); color: var(--text-color); font-size: 1rem;">
+                        </div>
+                        
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-color);">Subject</label>
+                            <input type="text" id="subject" name="subject" required style="width: 100%; padding: 0.8rem; border: 2px solid var(--input-border); border-radius: var(--border-radius); background-color: var(--input-bg); color: var(--text-color); font-size: 1rem;">
+                        </div>
+                        
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-color);">Message</label>
+                            <textarea id="message" name="message" required style="width: 100%; padding: 0.8rem; border: 2px solid var(--input-border); border-radius: var(--border-radius); background-color: var(--input-bg); color: var(--text-color); font-size: 1rem; min-height: 150px; resize: vertical;"></textarea>
+                        </div>
+                    </form>
+                `,
+                width: '600px',
+                showCancelButton: true,
+                confirmButtonText: 'Send Message',
+                confirmButtonColor: '#FE5D26',
+                cancelButtonText: 'Cancel',
+                showLoaderOnConfirm: true,
+                preConfirm: () => {
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const subject = document.getElementById('subject').value;
+                    const message = document.getElementById('message').value;
+
+                    if (!name || !email || !subject || !message) {
+                        Swal.showValidationMessage('Please fill in all fields');
+                        return false;
+                    }
+
+                    return emailjs.send("service_jjkxuyl", "template_1qblcok", {
+                        from_name: name,
+                        from_email: email,
+                        subject: subject,
+                        message: message
+                    });
+                },
+                allowOutsideClick: () => !Swal.isLoading()
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    swalWithCustomAnimation.fire({
+                        title: 'Success!',
+                        text: 'Your message has been sent successfully.',
+                        icon: 'success',
+                        confirmButtonColor: '#FE5D26'
+                    });
+                }
+            }).catch((error) => {
+                swalWithCustomAnimation.fire({
+                    title: 'Error!',
+                    text: 'There was a problem sending your message. Please try again later.',
+                    icon: 'error',
+                    confirmButtonColor: '#FE5D26'
+                });
+                console.error('Error:', error);
+            });
+        });
     </script>
 </body>
 </html>
